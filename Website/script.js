@@ -536,3 +536,218 @@ function createLanguageDropdown() {
 
 // Initialize language dropdown after DOM is loaded
 document.addEventListener('DOMContentLoaded', createLanguageDropdown);
+
+// ======== POPULAR CASES CAROUSEL ========
+let currentSlide = 0;
+const slidesToShow = 3;
+let autoSlideInterval;
+
+function moveCarousel(direction) {
+    const track = document.querySelector('.carousel-track');
+    const cards = document.querySelectorAll('.case-card');
+    const totalCards = cards.length;
+    const maxSlide = Math.max(0, totalCards - slidesToShow);
+    
+    currentSlide += direction;
+    
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide > maxSlide) currentSlide = maxSlide;
+    
+    const cardWidth = cards[0].offsetWidth + 32;
+    const translateX = -currentSlide * cardWidth;
+    
+    track.style.transform = `translateX(${translateX}px)`;
+    updateCarouselButtons(maxSlide);
+    
+    // Restart auto-slide after manual navigation
+    stopAutoSlide();
+    setTimeout(startAutoSlide, 2000);
+}
+
+function updateCarouselButtons(maxSlide) {
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+    nextBtn.style.opacity = currentSlide === maxSlide ? '0.5' : '1';
+    
+    prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
+    nextBtn.style.pointerEvents = currentSlide === maxSlide ? 'none' : 'auto';
+}
+
+// ======== CASE MODAL FUNCTIONALITY ========
+const caseData = {
+    'shah-bano': {
+        title: 'Shah Bano Case (1985)',
+        category: 'Maintenance after divorce',
+        summary: 'Shah Bano, a 62-year-old woman, was divorced via instant Triple Talaq after decades of marriage. Left with no financial support, she approached court seeking maintenance under Section 125 CrPC, applicable to all wives unable to maintain themselves.',
+        background: 'Elderly woman abandoned after decades of marriage. Fully financially dependent on husband. Divorced instantly without support. No livelihood or savings.',
+        suffering: 'Total financial insecurity. No money for food, rent, or healthcare. Social isolation and emotional trauma. Fear of survival in old age.',
+        action: 'Filed a maintenance petition under CrPC 125. Challenged husband\'s refusal based on personal law. Pursued the case through multiple courts up to the Supreme Court.',
+        judgment: 'Supreme Court ruled: CrPC 125 applies to all women, regardless of religion. Husband MUST pay maintenance if wife cannot maintain herself. Personal laws cannot override constitutional protections.',
+        impact: 'Any woman—of any religion—abandoned after divorce can: File under CrPC 125 for monthly maintenance. Seek free help from legal aid services. Obtain court-ordered financial support based on husband\'s income.'
+    },
+    'danial-latifi': {
+        title: 'Danial Latifi vs Union of India (2001)',
+        category: 'Long-term financial support for divorced Muslim women',
+        summary: 'After the Shah Bano backlash, the govt passed Muslim Women Act (1986). It was misinterpreted to limit maintenance to iddat (3 months). Lawyer Danial Latifi challenged this before the Supreme Court.',
+        background: 'Act seemed to weaken rights of divorced Muslim women. Many women were getting only 3 months\' worth of support. Increased poverty and vulnerability.',
+        suffering: 'No long-term financial security. Forced dependence on family or remarriage. Poverty after iddat. No stable support for children.',
+        action: 'Law challenged by women\'s rights advocates. Petition filed to ensure constitutional interpretation.',
+        judgment: 'Supreme Court ruled: Husband must make a "fair and reasonable provision" for wife\'s ENTIRE FUTURE. Payment may be lump-sum or long-term. 1986 Act must be read in line with constitutional protections.',
+        impact: 'A divorced Muslim woman can demand: Major long-term financial settlement. Protection from poverty after divorce.'
+    },
+    'shamim-ara': {
+        title: 'Shamim Ara vs State of UP (2002)',
+        category: 'Validity of talaq',
+        summary: 'Her husband claimed he divorced her years ago using oral talaq but produced no proof. She challenged this fake divorce claim.',
+        background: 'Husband fabricated date of divorce. No written proof or witnesses. Used false talaq claim to deny rights.',
+        suffering: 'Sudden abandonment. No maintenance. Social pressure and uncertainty. Mental harassment.',
+        action: 'Took the case to court. Demanded procedural requirements for talaq.',
+        judgment: 'Supreme Court ruled: Talaq MUST follow Quranic procedure. Husband must show: 1. Reasonable cause. 2. Proof of talaq. 3. Attempt at reconciliation. Unsupported talaq claims are INVALID.',
+        impact: 'Women can challenge: Fake talaq claims. Undocumented verbal talaq. Forced or manipulated divorces.'
+    },
+    'shayara-bano': {
+        title: 'Shayara Bano vs Union of India (2017)',
+        category: 'Instant Triple Talaq',
+        summary: 'Shayara Bano was divorced through instantaneous Triple Talaq, losing her marriage and security instantly. She challenged its constitutionality.',
+        background: 'Married for years. Husband divorced her suddenly via letter. No chance for reconciliation or response.',
+        suffering: 'Shock and emotional trauma. Financial insecurity. Social stigma and humiliation. Loss of marital rights without process.',
+        action: 'Filed petition before a Constitutional Bench. Claimed talaq-e-biddat violates Articles 14 & 21.',
+        judgment: 'Instant Triple Talaq is unconstitutional. Violates dignity, equality, and due process. Not essential to Islam.',
+        impact: 'If husband attempts instant Triple Talaq: It is illegal. She can file FIR under 2019 Act. Husband can face 3 years of imprisonment.'
+    },
+    'zunaideen': {
+        title: 'K. Zunaideen vs Ameena Begum (1998)',
+        category: 'Talaq in anger',
+        summary: 'Husband pronounced talaq in anger during a fight. Wife challenged its validity.',
+        background: 'Frequent disputes. Husband emotionally unstable. No attempt at reconciliation.',
+        suffering: 'Emotional abuse. Sudden marital breakup. No financial stability. Lack of clarity about marriage status.',
+        action: 'Filed legal challenge. Argued that talaq violated procedure.',
+        judgment: 'Court held: Talaq in anger is not valid. Divorce must be thoughtful, deliberate, and follow set steps.',
+        impact: 'A woman can challenge: Emotional, impulsive talaq. Divorce pronounced during fights.'
+    },
+    'hina': {
+        title: 'Hina Case (2020)',
+        category: 'Illegal attempt at instant Triple Talaq after 2019 Act',
+        summary: 'Hina\'s husband attempted instant Triple Talaq even after the 2019 Act banned it.',
+        background: 'Husband repeatedly threatened talaq. Emotional blackmail. Continued illegal practice.',
+        suffering: 'Fear of illegal divorce. Domestic harassment. No stability for children.',
+        action: 'Filed FIR under Triple Talaq (2019) Act.',
+        judgment: 'Husband arrested. Case registered. Provided safety to woman.',
+        impact: 'Women can immediately: File FIR. Seek police protection. Stop illegal divorce attempts.'
+    },
+    'vishaka': {
+        title: 'Vishaka vs State of Rajasthan (1997)',
+        category: 'Workplace harassment',
+        summary: 'Filed after social worker Bhanwari Devi was assaulted for preventing child marriage.',
+        background: 'No workplace harassment law existed. Women unsafe in field jobs.',
+        suffering: 'Assault. Social pressure. Trauma and injustice.',
+        action: 'Women\'s groups filed PIL demanding protection.',
+        judgment: 'Supreme Court created Vishaka Guidelines: Mandatory internal complaint committees. Employer responsibility for safety.',
+        impact: 'Women can complain under POSH Act in ANY workplace (schools, colleges, offices).'
+    },
+    'laxmi': {
+        title: 'Laxmi vs Union of India (2013)',
+        category: 'Acid attacks',
+        summary: 'Teenager Laxmi survived an acid attack and filed PIL demanding stricter laws.',
+        background: 'Acid was sold freely to anyone. Attackers faced weak punishment.',
+        suffering: 'Permanent injuries. Psychological trauma. Expensive medical operations.',
+        action: 'Filed PIL to regulate acid sales.',
+        judgment: 'Acid cannot be sold without ID. Stronger punishments introduced. Victims must receive compensation.',
+        impact: 'Acid buyers must provide ID. Police must act immediately on complaints.'
+    },
+    'nirbhaya': {
+        title: 'Nirbhaya Case (2012–2017)',
+        category: 'Sexual violence',
+        summary: 'A young woman was brutally assaulted in Delhi, triggering nationwide protests.',
+        background: 'Lack of fast police response. Weak sexual assault laws.',
+        suffering: 'Life-threatening injuries. Emotional and physical trauma. National outrage.',
+        action: 'Fast-track court trial. Justice Verma Committee formed.',
+        judgment: 'Death penalty for convicts. Stronger rape laws created.',
+        impact: 'Women now have: Faster trials. Harsher punishments for offenders. Protection against stalking & voyeurism.'
+    }
+};
+
+function openCaseModal(caseId) {
+    const modal = document.getElementById('case-modal');
+    const data = caseData[caseId];
+    
+    if (!data) return;
+    
+    // Populate modal content
+    document.getElementById('modal-case-title').textContent = data.title;
+    document.getElementById('modal-case-category').textContent = data.category;
+    document.getElementById('modal-summary').textContent = data.summary;
+    document.getElementById('modal-background').textContent = data.background;
+    document.getElementById('modal-suffering').textContent = data.suffering;
+    document.getElementById('modal-action').textContent = data.action;
+    document.getElementById('modal-judgment').textContent = data.judgment;
+    document.getElementById('modal-impact').textContent = data.impact;
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCaseModal() {
+    const modal = document.getElementById('case-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal on outside click
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('case-modal');
+    if (e.target === modal) {
+        closeCaseModal();
+    }
+});
+
+// Close modal on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeCaseModal();
+    }
+});
+
+function moveCarousel(direction) {
+    // Simple button functionality - no movement for now
+    console.log('Button clicked:', direction);
+}
+
+// Touch/swipe support for mobile
+let startX = 0;
+let isDragging = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    if (!track) return;
+    
+    track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    track.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    track.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+        
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                moveCarousel(1); // Swipe left - next
+            } else {
+                moveCarousel(-1); // Swipe right - prev
+            }
+        }
+        
+        isDragging = false;
+    });
+});
