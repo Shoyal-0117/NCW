@@ -244,47 +244,223 @@
                 <h2>Popular Cases</h2>
             </div>
             
-            <div class="popular-cases-grid">
-                <article class="case-card" style="--case-bg: #F3F9FF;">
-                    <div class="case-icon-wrapper" style="--icon-bg: #E3F2FD;">
-                        <span class="material-icons-outlined" style="color: #0B7BCB;">home</span>
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">
+                    <span class="material-icons-outlined">chevron_left</span>
+                </button>
+                
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <article class="case-card" style="--case-bg: #F3F9FF;" onclick="openCaseModal('shah-bano')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E3F2FD;">
+                                <span class="material-icons-outlined" style="color: #0B7BCB;">gavel</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1985</span>
+                                <span class="case-category">Maintenance after divorce</span>
+                                <h3>Shah Bano Case</h3>
+                                <p>Landmark case ensuring all divorced women can claim maintenance under CrPC 125</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F5F9F4;" onclick="openCaseModal('danial-latifi')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E3F2E2;">
+                                <span class="material-icons-outlined" style="color: #34842E;">account_balance</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2001</span>
+                                <span class="case-category">Long-term financial support</span>
+                                <h3>Danial Latifi Case</h3>
+                                <p>Interpreted 1986 Act to guarantee long-term maintenance beyond iddat</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FDF6F7;" onclick="openCaseModal('shamim-ara')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FBE5E7;">
+                                <span class="material-icons-outlined" style="color: #D32F2F;">verified</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2002</span>
+                                <span class="case-category">Validity of talaq</span>
+                                <h3>Shamim Ara Case</h3>
+                                <p>Court held talaq valid only if pronounced with reason, proof, and reconciliation attempts</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FEFBF2;" onclick="openCaseModal('shayara-bano')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FFF6DE;">
+                                <span class="material-icons-outlined" style="color: #F9A825;">block</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2017</span>
+                                <span class="case-category">Instant Triple Talaq</span>
+                                <h3>Shayara Bano Case</h3>
+                                <p>Supreme Court declared instant Triple Talaq unconstitutional</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F0F4FF;" onclick="openCaseModal('zunaideen')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E0E7FF;">
+                                <span class="material-icons-outlined" style="color: #6366F1;">psychology</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1998</span>
+                                <span class="case-category">Talaq in anger</span>
+                                <h3>K. Zunaideen Case</h3>
+                                <p>Divorce given in emotional outburst is invalid</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F8F0FF;" onclick="openCaseModal('hina')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #F0E6FF;">
+                                <span class="material-icons-outlined" style="color: #8B5CF6;">local_police</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2020</span>
+                                <span class="case-category">Illegal Triple Talaq</span>
+                                <h3>Hina Case</h3>
+                                <p>Husband punished under criminal law for attempting Triple Talaq after 2019 Act</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F0FFF4;" onclick="openCaseModal('vishaka')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E6FFED;">
+                                <span class="material-icons-outlined" style="color: #16A34A;">security</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1997</span>
+                                <span class="case-category">Workplace harassment</span>
+                                <h3>Vishaka Case</h3>
+                                <p>Created Vishaka Guidelines leading to POSH Act 2013</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FFF7ED;" onclick="openCaseModal('laxmi')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FFEDD5;">
+                                <span class="material-icons-outlined" style="color: #EA580C;">healing</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2013</span>
+                                <span class="case-category">Acid attacks</span>
+                                <h3>Laxmi Case</h3>
+                                <p>Regulated acid sale and increased punishments</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FEF2F2;" onclick="openCaseModal('nirbhaya')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FECACA;">
+                                <span class="material-icons-outlined" style="color: #DC2626;">justice</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2012-2017</span>
+                                <span class="case-category">Sexual violence</span>
+                                <h3>Nirbhaya Case</h3>
+                                <p>Led to major reforms under Criminal Law Amendment Act 2013</p>
+                            </div>
+                        </article>
+                        
+                        <!-- Duplicate all cards for seamless loop -->
+                        <article class="case-card" style="--case-bg: #F3F9FF;" onclick="openCaseModal('shah-bano')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E3F2FD;">
+                                <span class="material-icons-outlined" style="color: #0B7BCB;">gavel</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1985</span>
+                                <span class="case-category">Maintenance after divorce</span>
+                                <h3>Shah Bano Case</h3>
+                                <p>Landmark case ensuring all divorced women can claim maintenance under CrPC 125</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F5F9F4;" onclick="openCaseModal('danial-latifi')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E3F2E2;">
+                                <span class="material-icons-outlined" style="color: #34842E;">account_balance</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2001</span>
+                                <span class="case-category">Long-term financial support</span>
+                                <h3>Danial Latifi Case</h3>
+                                <p>Interpreted 1986 Act to guarantee long-term maintenance beyond iddat</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FDF6F7;" onclick="openCaseModal('shamim-ara')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FBE5E7;">
+                                <span class="material-icons-outlined" style="color: #D32F2F;">verified</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2002</span>
+                                <span class="case-category">Validity of talaq</span>
+                                <h3>Shamim Ara Case</h3>
+                                <p>Court held talaq valid only if pronounced with reason, proof, and reconciliation attempts</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FEFBF2;" onclick="openCaseModal('shayara-bano')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FFF6DE;">
+                                <span class="material-icons-outlined" style="color: #F9A825;">block</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2017</span>
+                                <span class="case-category">Instant Triple Talaq</span>
+                                <h3>Shayara Bano Case</h3>
+                                <p>Supreme Court declared instant Triple Talaq unconstitutional</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F0F4FF;" onclick="openCaseModal('zunaideen')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E0E7FF;">
+                                <span class="material-icons-outlined" style="color: #6366F1;">psychology</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1998</span>
+                                <span class="case-category">Talaq in anger</span>
+                                <h3>K. Zunaideen Case</h3>
+                                <p>Divorce given in emotional outburst is invalid</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F8F0FF;" onclick="openCaseModal('hina')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #F0E6FF;">
+                                <span class="material-icons-outlined" style="color: #8B5CF6;">local_police</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2020</span>
+                                <span class="case-category">Illegal Triple Talaq</span>
+                                <h3>Hina Case</h3>
+                                <p>Husband punished under criminal law for attempting Triple Talaq after 2019 Act</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #F0FFF4;" onclick="openCaseModal('vishaka')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #E6FFED;">
+                                <span class="material-icons-outlined" style="color: #16A34A;">security</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">1997</span>
+                                <span class="case-category">Workplace harassment</span>
+                                <h3>Vishaka Case</h3>
+                                <p>Created Vishaka Guidelines leading to POSH Act 2013</p>
+                            </div>
+                        </article>
+                        
+                        <article class="case-card" style="--case-bg: #FFF7ED;" onclick="openCaseModal('laxmi')">
+                            <div class="case-icon-wrapper" style="--icon-bg: #FFEDD5;">
+                                <span class="material-icons-outlined" style="color: #EA580C;">healing</span>
+                            </div>
+                            <div class="case-content">
+                                <span class="case-year">2013</span>
+                                <span class="case-category">Acid attacks</span>
+                                <h3>Laxmi Case</h3>
+                                <p>Regulated acid sale and increased punishments</p>
+                            </div>
+                        </article>
                     </div>
-                    <div class="case-content">
-                        <span class="case-category">Health & Family Welfare</span>
-                        <h3>Shoyal haldar</h3>
-                        <p>Online • Time - 30 days</p>
-                    </div>
-                </article>
-                <article class="case-card" style="--case-bg: #F5F9F4;">
-                    <div class="case-icon-wrapper" style="--icon-bg: #E3F2E2;">
-                        <span class="material-icons-outlined" style="color: #34842E;">person_pin</span>
-                    </div>
-                    <div class="case-content">
-                        <span class="case-category">Deputy Commissioner</span>
-                        <h3>Income Certificate</h3>
-                        <p>Online • Time - 30 days</p>
-                    </div>
-                </article>
-                <article class="case-card" style="--case-bg: #FDF6F7;">
-                    <div class="case-icon-wrapper" style="--icon-bg: #FBE5E7;">
-                        <span class="material-icons-outlined" style="color: #D32F2F;">directions_car</span>
-                    </div>
-                    <div class="case-content">
-                        <span class="case-category">Transport</span>
-                        <h3>Driving License</h3>
-                        <p>Online • Time - 30 days</p>
-                    </div>
-                </article>
-                <article class="case-card" style="--case-bg: #FEFBF2;">
-                    <div class="case-icon-wrapper" style="--icon-bg: #FFF6DE;">
-                        <span class="material-icons-outlined" style="color: #F9A825;">school</span>
-                    </div>
-                    <div class="case-content">
-                        <span class="case-category">Education</span>
-                        <h3>NoC for setting up CB</h3>
-                        <p>Online • Time - 30 days</p>
-                    </div>
-                </article>
+                </div>
+                
+                <button class="carousel-btn next-btn" onclick="moveCarousel(1)">
+                    <span class="material-icons-outlined">chevron_right</span>
+                </button>
             </div>
 
         </div>
@@ -493,6 +669,46 @@
 
     </footer>
 
+    <!-- Case Detail Modal -->
+    <div id="case-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCaseModal()">
+                <span class="material-icons-outlined">close</span>
+            </button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="modal-case-title">Case Title</h2>
+                    <span id="modal-case-category" class="modal-category">Category</span>
+                </div>
+                <div class="modal-sections">
+                    <section class="modal-section">
+                        <h3>Case Summary</h3>
+                        <p id="modal-summary">Case summary content will be loaded here...</p>
+                    </section>
+                    <section class="modal-section">
+                        <h3>Background</h3>
+                        <p id="modal-background">Background information will be loaded here...</p>
+                    </section>
+                    <section class="modal-section">
+                        <h3>Problem Faced</h3>
+                        <p id="modal-suffering">Details about the suffering will be loaded here...</p>
+                    </section>
+                    <section class="modal-section">
+                        <h3>Actions Taken</h3>
+                        <p id="modal-action">Actions taken will be loaded here...</p>
+                    </section>
+                    <section class="modal-section">
+                        <h3>Court Judgement</h3>
+                        <p id="modal-judgment">Court judgment details will be loaded here...</p>
+                    </section>
+                    <section class="modal-section">
+                        <h3>How This Case Can Help You Today</h3>
+                        <p id="modal-impact">Impact on women's rights will be loaded here...</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         function changeFontSize(size) {
