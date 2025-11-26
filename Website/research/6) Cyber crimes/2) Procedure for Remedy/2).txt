@@ -1,0 +1,28 @@
+
+
+**Reporting Cyber Crimes**
+
+A victim of a cyber crime can file a complaint by contacting the nearest cyber crime cell or local police station. Complaints can also be filed anonymously through the official National Cybercrime Reporting Portal (https://cybercrime.gov.in).
+
+**Information Required for Specific Cyber Crimes:**
+
+**1. For Hacking/Data Breach:**
+To assist the investigation in a hacking case, the following information should be provided:
+-   Server logs.
+-   A soft and hard copy of the defaced web page, if a website has been defaced.
+-   If data has been compromised, provide soft copies of both the original and the compromised data.
+-   Details of the access control mechanism (i.e., who had what kind of access to the compromised system).
+-   A list of suspects, if any.
+-   All relevant information that answers the key questions:
+    -   **What** has been compromised?
+    -   **Who** might have compromised the system?
+    -   **When** was the system compromised?
+    -   **Why** might the system have been compromised?
+    -   **Where** is the impact of the attack (identifying the target system)?
+    -   **How many** systems have been compromised?
+
+**2. For Email Abuse (e.g., vulgar emails):**
+In cases of abusive emails, please provide:
+-   The complete extended headers of the offending email (provide both a soft and hard copy).
+-   Do not delete the offending email from your inbox.
+-   Save a copy of the offending email on your computer's hard drive.
